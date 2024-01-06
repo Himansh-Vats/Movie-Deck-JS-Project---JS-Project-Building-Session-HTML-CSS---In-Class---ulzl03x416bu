@@ -125,8 +125,16 @@ nextButton.addEventListener("click",()=>{
     }
 })
 
-async function searchMovie(search){
-
+async function searchMovie(movieName){
+    try{
+        let response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=f531333d637d0c44abc85b3e74db2186&include_adult=false&language=en-US&page=1`);
+        response = await response.json();
+        movies = response.results;
+        renderMovies(movies);
+    }
+    catch(err){
+        console.log(err);
+    }
 }
 
 let searchInput = document.querySelector("#search-input");
