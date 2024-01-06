@@ -131,10 +131,10 @@ async function searchMovie(search){
 
 let searchInput = document.querySelector("#search-input");
 let searchButton = document.querySelector("#search-button");
-let pageination = document.querySelector(".pagination");
+let pagination = document.querySelector(".pagination");
 
-searchButton.addEventListener("onClick",(event)=>{
-    let search = event.target.value;
-    searchMovie(search);
-
+searchButton.addEventListener("click",()=>{
+    let input = searchInput.value;
+    searchMovie(input);
+    pagination.style.display = "none";
 })
