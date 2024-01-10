@@ -30,16 +30,16 @@ function renderMovies(movies) {
                <p class="vote-count">Votes:${input.vote_count}</p>
                <p class="vote-average">Rating:${input.vote_average}</p>
            </section>
-           <i class="fa-regular fa-heart fa-2xl favourite" id="${input.title}"></i>
+           <i class="${input.isfav?'fa-solid': "fa-regular"} fa-heart fa-2xl favourite" id="${input.title}"></i>
          </section>`;
 
         const favouriteButton = listItem.querySelector(".favourite");
         favouriteButton.addEventListener("click", (event) => {
-            if(favouriteButton.classList.contains("fa-solid")){
+            if (favouriteButton.classList.contains("fa-solid")) {
                 favouriteButton.classList.remove("fa-solid");
                 removeMovieFromLocalStorage(event.target.id);
             }
-            else{
+            else {
                 favouriteButton.classList.add("fa-solid");
                 addMovieToLocalStorage(event.target.id);
             }
@@ -47,6 +47,25 @@ function renderMovies(movies) {
         parent.appendChild(listItem);
     });
 
+}
+
+function checkfavourites(movies) {
+    const favMovies = getMovieFromLocalStorage();
+    const updatedMovies = movies.map((movie) => {
+        const favExist = favMovies.some((favMovie) => {
+            return favMovie.title === movie.title;
+        })
+        if (favExist) {
+            return {
+                ...movie, 
+                isfav:true
+            }
+        }
+        else{
+            movie;
+        }
+    })
+    renderMovies(updatedMovies);
 }
 
 //part-3
@@ -160,56 +179,73 @@ searchButton.addEventListener("click", () => {
 })
 
 // local storage
-function getMovieFromLocalStorage(){
+function getMovieFromLocalStorage() {
     let movieList = JSON.parse(localStorage.getItem("favouriteMovies"));
-    return movieList==null ? [] : movieList;
+    return movieList == null ? [] : movieList;
 }
 
-function addMovieToLocalStorage(movieName){
+function addMovieToLocalStorage(movieName) {
     let existingMovie = getMovieFromLocalStorage();
-    localStorage.setItem("favouriteMovies",JSON.stringify([...existingMovie,movieName]))
+    localStorage.setItem("favouriteMovies", JSON.stringify([...existingMovie, movieName]))
 }
 
-function removeMovieFromLocalStorage(movieName){
+function removeMovieFromLocalStorage(movieName) {
     let existingMovie = getMovieFromLocalStorage();
-    let finalMovie = existingMovie.filter((input)=>{
-        return movieName!=input;
+    let finalMovie = existingMovie.filter((input) => {
+        return movieName != input;
     })
-    localStorage.setItem("favouriteMovies",JSON.stringify([...finalMovie]));
+    localStorage.setItem("favouriteMovies", JSON.stringify([...finalMovie]));
 }
 
 // switch Tab
 let allTab = document.querySelector("#all-tab");
 let favoriteTab = document.querySelector("#favorites-tab");
 
-allTab.addEventListener("click",switchTab);
-favoriteTab.addEventListener("click",switchTab);
+allTab.addEventListener("click", switchTab);
+favoriteTab.addEventListener("click", switchTab);
 
-function switchTab(event){
+function switchTab(event) {
     allTab.classList.remove("active-tab");
     favoriteTab.classList.remove("active-tab");
 
     event.target.classList.add("active-tab");
 
-    if(allTab.classList.contains("active-tab")){
+    if (allTab.classList.contains("active-tab")) {
         fetchMovies(1);
     }
-    else if(favoriteTab.classList.contains("active-tab")){
+    else if (favoriteTab.classList.contains("active-tab")) {
         favouriteListTab();
     }
 }
 
-function favouriteListTab(){
+function favouriteListTab() {
     let localStorage = getMovieFromLocalStorage();
     let NewLocalStorageMovie = [];
 
-    for(let obj of movies){
-        
-        if(localStorage.includes(obj.title)){
+    for (let obj of movies) {
+
+        if (localStorage.includes(obj.title)) {
             NewLocalStorageMovie.push(obj);
         }
     }
     renderMovies(NewLocalStorageMovie);
 }
 
-    
+searchInput.addEventListener("keyup", (event) => {
+    debounceSearch(event);
+})
+
+debounceSearch = debounce((event) => (saveInput(event)));
+
+function debounce(cb, delay = 500) {
+    let debounceTimer;
+    return function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setInterval(() => cb.apply(this, arguments), delay)
+    }
+
+}
+
+function saveInput(event) {
+    searchMovie(event.target.value);
+}
