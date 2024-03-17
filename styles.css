@@ -1,143 +1,156 @@
-*{
-    padding:0;
-    margin:0;
+* {
+  padding: 0;
+  margin: 0;
 }
-header{
-    background-color: #333;
-    color:white;
-    padding:20px;
-    text-align: left;
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: left;
 }
-
-header a{
-    color:white;
-    text-decoration: none;
+body {
+  background-color: #f7f7f7;
 }
 
-.search-bar{
-    display: flex;
-    justify-content: center;
-    margin:10px;
+header a {
+  color: white;
+  text-decoration: none;
 }
 
-#search-input{
-    width: 300px;
-    height: 30px;
-    border:1px solid #333;
-    border-radius: 5px;
-    margin-right:10px;
-    padding:0 7px;
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }
 
-#search-button{
-    width: 100px;
-    height: 33px;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
+#search-input {
+  width: 300px;
+  height: 30px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 0 7px;
 }
 
-.sorting-options{
-    display: flex;
-    justify-content: center;
-    margin:10px;
-    gap:10px;
+#search-button {
+  width: 100px;
+  height: 33px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
 }
 
-#sort-by-date,#sort-by-rating{
-    width: 250px;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+.sorting-options {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  gap: 10px;
 }
 
-.tabs{
-    display: flex;
-    justify-content: flex-start;
-    gap:10px;
-    margin-left:40px;
+#sort-by-date,
+#sort-by-rating {
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+#sort-by-date:hover,
+#sort-by-rating:hover {
+  background-color: #333;
+  color: whitesmoke;
 }
 
-.active-tab{
-    background-color: #333;
-    color:white;
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-left: 40px;
 }
 
-#all-tab,#favorites-tab{
-    width: 100px;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.active-tab {
+  background-color: #333;
+  color: white;
 }
 
-#movie-list{
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: center;
-    list-style-type: none;
-    padding:20px 0;
+#all-tab,
+#favorites-tab {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.card{
-    width: 200px;
-    height: 375px;
-    margin: 10px;
-    border: 1px solid #333;
-    border-radius: 5px;
+#movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+  padding: 20px 0;
 }
 
-.poster{
-    width: 200px;
-    height: 250px;
+.card {
+  width: 200px;
+  height: 375px;
+  margin: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
 }
 
-.title{
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 10px;
+.poster {
+  width: 200px;
+  height: 250px;
 }
 
-.vote-favouriteIcon{
-    display: flex;
-    justify-content: space-around;
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.vote-count,.vote-average{
-    font-size:14px;
+.vote-favouriteIcon {
+  display: flex;
+  justify-content: space-around;
 }
 
-#favorite-icon{
-    width: 20px;
-    height: 20px;
-    margin-top:16px;
-    cursor: pointer;
+.vote-count,
+.vote-average {
+  font-size: 14px;
 }
 
-.pagination{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    gap:20px;
+#favorite-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 16px;
+  cursor: pointer;
 }
 
-#prev-button,#page-number-button,#next-button{
-    width: 100px;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 20px;
 }
 
-footer{
-    background-color: #333;
-    color:white;
-    padding:10px;
-    text-align: center;
+#prev-button,
+#page-number-button,
+#next-button {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
